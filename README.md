@@ -29,4 +29,4 @@ $tvdb = new TvDb("http://thetvdb.com", "APIKEY", 3600); // one hour
 
 Status:
 -------
-*This version is still in Beta and may contain lots of errors.
+This version is still in Beta and may contain lots of errors.
