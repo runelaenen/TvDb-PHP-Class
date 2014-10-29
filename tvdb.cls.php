@@ -99,12 +99,25 @@ class TvDb{
     {
         $data = $this->fetchXml('series/' . $serieId . '/banners.xml');
         $banners = array();
-        foreach ($data->Banner as $banner) {
+        foreach ($data->Banners as $banner) {
             $banners[] = $banner;
         }
 
         return $banners;
     }
+	public function getBanner($url){
+		return $this->baseUrl . '/banners/' . $url;
+	}
+	public function getPoster($serieId){
+		$data = $this->fetchXml($this->apiKey . '/series/' . $serieId . '/banners.xml');
+		$posters = array();
+		foreach($data as $banner){
+			if($banner->BannerType == "poster"){
+				$posters[] = $banner->BannerPath;
+			}
+		}
+		return $this->getBanner($posters[0]);
+	}
     public function getActors($serieId)
     {
         $data = $this->fetchXml('series/'. $serieId . '/actors.xml');
