@@ -15,13 +15,15 @@ require_once("tvdb.cls.php");
 $tvdb = new TvDb("http://thetvdb.com", "APIKEY");
 ```
 
-Search for a show
+Search for a show:
+------------------
 
 ```php
 $data = $tvdb->getSeries('Doctor Who (2005)');
 ```
 
-Use the first show found and get the S01E01 episode
+Use the first show found and get the S01E01 episode:
+----------------------------------------------------
 
 ```php
 $episode = $tvdb->getEpisode($data[0]->Series->seriesid, 1, 1, 'en');
@@ -33,7 +35,7 @@ Cache:
 Unlike most of the other classes, this TvDb class default uses caching.
 This means you will need a writable cache folder on the same level as the class.
 
-The Time To Live is 600 (10 minutes) by default. To choose your own value, use
+The Time To Live is 600 (10 minutes) by default. To choose your own value, use:
 
 ```php
 $tvdb = new TvDb("http://thetvdb.com", "APIKEY", 3600); // one hour
